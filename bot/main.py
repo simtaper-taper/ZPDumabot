@@ -41,7 +41,8 @@ async def on_startup(bot: Bot) -> None:
 
 
 async def on_shutdown(bot: Bot) -> None:
-    await bot.delete_webhook(drop_pending_updates=False)
+    # Вебхук НЕ снимаем: пусть Telegram копит апдейты во время
+    # рестартов и доставляет их, когда сервис снова поднимется.
     await close_db()
 
 
